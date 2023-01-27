@@ -1,0 +1,2 @@
+public class OrderConfirmedPagTeste {
+}
