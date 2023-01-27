@@ -93,3 +93,21 @@
 
 ___________________________________________________________________________________________
 ___________________________________________________________________________________________
+
+## Projekt
+### Page 1
+pages.HomePage.java
+- Metoda przekierowujące do **MOJE KONTO**
+- Metoda przekierowująca do **SKLEP** 
+### Page 2
+pages.LoginPage.java
+- Metody do wypełnienia pól login oraz hasło.
+- Metoda klikająca przycisk zaloguj.
+
+### Page 3
+LoginAccount.java
+- Metoda pobierająca dane zalogowanego profilu.
+
+### Test 1
+LoginShopTest
+Test weryfikujący czy dane zalogowane profilu są poprawne.
