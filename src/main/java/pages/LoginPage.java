@@ -1,12 +1,14 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
+import base.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-    public static WebDriver driver;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
+public class LoginPage extends TestBase {
+
 
     /*** repozytorium elementów ***/
     @FindBy(id = "username")
@@ -19,7 +21,7 @@ public class LoginPage {
     WebElement loginButton;
 
     /*** konstruktor ***/
-    public LoginPage(WebDriver driver) {
+    public LoginPage() {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -33,16 +35,29 @@ public class LoginPage {
     }
     //Wypełnienie pola login
     public void setLoginInput(String login) {
+        wait.until(visibilityOf(passwordInput));
         loginInput.clear();
         loginInput.sendKeys(login);
     }
     //Wypełnienie pola hasło.
     public void setPasswordInput(String password) {
+        wait.until(visibilityOf(passwordInput));
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
     //Metoda klikająca przycisk zaloguj.
     public void clickLoginButton() {
+        wait.until(visibilityOf(loginButton));
         loginButton.click();
+    }
+
+    //metoda zbiorcza trzech metod powyżej. Wywołujemy te metody.
+    // Metoda wykonująca pełną akcję logowania
+    //zwracająca stronę AccountPage
+    public AccountPage login(String login, String password){
+        setLoginInput(login);
+        setPasswordInput(password);
+        clickLoginButton();
+        return new AccountPage();
     }
 }

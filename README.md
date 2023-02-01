@@ -96,17 +96,33 @@ ________________________________________________________________________________
 
 ## Projekt
 ### Page 1
-pages.HomePage.java
+HomePage.java
 - Metoda przekierowujące do **MOJE KONTO**
 - Metoda przekierowująca do **SKLEP** 
 ### Page 2
-pages.LoginPage.java
+LoginPage.java
 - Metody do wypełnienia pól login oraz hasło.
 - Metoda klikająca przycisk zaloguj.
 
 ### Page 3
 LoginAccount.java
 - Metoda pobierająca dane zalogowanego profilu.
+
+### Page 4
+AccountPage.java
+- Metoda pobierająca nazwę konta.
+- Metoda przejścia na kolejne PageObject -> zamówienia.
+- Metoda przejścia na kolejne PageObject -> adresy.
+
+### Page 5
+AdressPage.java
+- Metoda przejścia na kolejne PageObject -> dodanie/edytowanie adresu dostawy.
+- Metoda pobierająca i zwracająca komunikat dotyczący istnienia adresu dostawy.
+
+
+
+
+
 
 ### Test 1
 LoginShopTest
