@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class AdressPage extends TestBase {
+public class AddressPage extends TestBase {
 
     /*** repozytorium elementów ***/
     @FindBy(xpath = "//h3[contains(text(),'wysyłki')]//parent::*//parent::*/address")
@@ -16,7 +16,7 @@ public class AdressPage extends TestBase {
     private WebElement addDeliveryAddress;
 
     /*** konstruktor ***/
-    public AdressPage() {
+    public AddressPage() {
         PageFactory.initElements(driver, this);
     }
     /****  metody  ****/

@@ -38,7 +38,8 @@ public class TestBase {
     } catch (IOException e) {
         e.printStackTrace();
     }
-        try {
+
+    try {
             testdata = new Properties();
             FileInputStream file = new FileInputStream(System.getProperty("user.dir") +
                     "/src/main/java/testdata/testdata.properties");
@@ -77,7 +78,7 @@ public class TestBase {
             case "firefox":
                 System.setProperty("webdriver.geckodriver", System.getProperty("user.dir") + "/src/main/resources/geckodriver");
 
-                driver1 = new FirefoxDriver();
+                FirefoxDriver driver1 = new FirefoxDriver();
                 break;
             default:
                 throw new IllegalArgumentException("Nierozpoznano przeglądarki internetowej. " +

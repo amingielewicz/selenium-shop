@@ -35,9 +35,9 @@ public class AccountPage extends TestBase {
         return new OrderConfirmedPage();
     }
     //Przejście na zakładkę adresy
-    public AdressPage goToAdress(){
+    public AddressPage goToAdress(){
         wait.until(visibilityOf(adresyMenuBoczne));
         adresyMenuBoczne.click();
-        return new AdressPage();
+        return new AddressPage();
     }
 }

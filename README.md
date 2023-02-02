@@ -97,32 +97,52 @@ ________________________________________________________________________________
 ## Projekt
 ### Page 1
 HomePage.java
-- Metoda przekierowujące do **MOJE KONTO**
-- Metoda przekierowująca do **SKLEP** 
+- Przekierowanie do **MOJE KONTO**
+- Przekierowanie do **SKLEP** 
 ### Page 2
 LoginPage.java
-- Metody do wypełnienia pól login oraz hasło.
-- Metoda klikająca przycisk zaloguj.
+- Wypełnienie pól login oraz hasło.
+- Kliknięcie w przycisk zaloguj.
 
 ### Page 3
 LoginAccount.java
-- Metoda pobierająca dane zalogowanego profilu.
+- Pobranie danych zalogowanego profilu.
 
 ### Page 4
 AccountPage.java
-- Metoda pobierająca nazwę konta.
-- Metoda przejścia na kolejne PageObject -> zamówienia.
-- Metoda przejścia na kolejne PageObject -> adresy.
+- Pobranie nazwy konta.
+- Przejście na kolejne PageObject -> zamówienia.
+- Przejście na kolejne PageObject -> adresy.
 
 ### Page 5
-AdressPage.java
-- Metoda przejścia na kolejne PageObject -> dodanie/edytowanie adresu dostawy.
-- Metoda pobierająca i zwracająca komunikat dotyczący istnienia adresu dostawy.
+AddressPage.java
+- Przejście na kolejne PageObject -> dodanie/edytowanie adresu dostawy.
+- Pobranie i zwrucenie komunikatu dotyczącego istnienia adresu dostawy.
 
+### Page 6
+OrderConfirmedPage.java
+- Pobranie i zwrócenie komunikatu o liczbie złożonych zamówień.
 
+### Page 7
+DeliveryAddresDetailsPage.java
+- Wypisanie wartości tekstowej w pole Imię 
+- Wypisanie wartości tekstowej w pole Nazwisko 
+- Wypisanie wartości tekstowej w pole Region 
+- Wpisanie wartości tekstowej w pole Ulica
+- Wpisanie wartości tekstowej w pole Kod pocztowy
+- Wpisanie wartości tekstowej w pole Miasto 
+- Kliknięcie przycisku: Zapisz adres 
+- Metoda wykonująca pełną akcję uzupełnienia formularza adresy dostawy. Metoda zwraca stronę AddressPage.
 
+### Page 8
+ProductListPage.java 
+- Pobranie i zwrócenie ilości produktów 
+- Wybranie z listy sortującej pozycji: Sortuj wg ceny: od najniższej
+- Sortowanie listy po cenie od najniższej
+- Pobranie przesortowanej listy produktów 
+- Wypianie produktów do konsoli
 
-
+____________________________________________________________________________
 
 ### Test 1
 LoginShopTest
