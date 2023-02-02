@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
-public class DeliveryAddresDetailsPage extends TestBase {
+public class DeliveryAddressDetailsPage extends TestBase {
 
     /*** repozytorium elementów ***/
     @FindBy(css = "input#shipping_first_name")
@@ -33,7 +33,7 @@ public class DeliveryAddresDetailsPage extends TestBase {
 
 
     /*** konstruktor ***/
-    public DeliveryAddresDetailsPage() {
+    public DeliveryAddressDetailsPage() {
         PageFactory.initElements(driver, this);
 
         /****  metody  ****/
@@ -86,7 +86,7 @@ public class DeliveryAddresDetailsPage extends TestBase {
         }
         //Metoda wykinująca pełną akcję uzupełnienie formularza adresy dostawy
         //zwraca stronę AddressPage
-        public AddressPage fillForm (String nameStr, String lastNameStr, String countryStr, String addressStr, String
+        public AddressPage fillF orm (String nameStr, String lastNameStr, String countryStr, String addressStr, String
         postCodeStr, String cityStr){
             setName(nameStr);
             setLastName(lastNameStr);

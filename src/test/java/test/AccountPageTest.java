@@ -4,20 +4,18 @@ import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-
-public class LoginPageTest extends TestBase {
-    /******* deklaracja obiektów ********/
+public class AccountPageTest extends TestBase {
     HomePage homePage;
-    AccountPage accountPage;
     LoginPage loginPage;
+    AccountPage accountPage;
 
     /********* konstruktor ***********/
-    public LoginPageTest() {
+    public AccountPageTest() {
         super();
     }
 
@@ -35,14 +33,14 @@ public class LoginPageTest extends TestBase {
 
     // Po każdym teście zamknięcie przeglądarki
     @AfterMethod
-    public void closeBrowser() {
+    public void closeBrowser(){
         driver.quit();
     }
 
-
-    /********* TESTY ***********/
+    /*********  TESTY *********/
     @Test(priority = 0)
-    public void verifyPageTitle() {
-        Assert.assertTrue(loginPage.getPageTitle().equals(testdata.getProperty("correctAccountPageTitle")));
+    public void verifyNameAccountAfterLogin(){
+        Assert.assertEquals(accountPage.getNameAccount(), testdata.getProperty("correctNameAccount"),
+                "Nie jesteś zalogowany na własciwe konto! Proszę o wylogowanie się");
     }
 }

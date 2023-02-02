@@ -21,10 +21,10 @@ public class AddressPage extends TestBase {
     }
     /****  metody  ****/
     // Przejście do strony z dodaniem/edytowaniem adresy dostawy
-    public DeliveryAddresDetailsPage goToAddDeliveryAddress(){
+    public DeliveryAddressDetailsPage goToAddDeliveryAddress(){
         wait.until(visibilityOf(addDeliveryAddress));
         addDeliveryAddress.click();
-        return new DeliveryAddresDetailsPage();
+        return new DeliveryAddressDetailsPage();
     }
     // Pobranie i zwrócenie komunikatu dotyczącego istnienia adresy dostawy
     public String getInfoDeliveryAddress(){

@@ -4,20 +4,20 @@ import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import pages.AccountPage;
+import pages.AddressPage;
 import pages.HomePage;
 import pages.LoginPage;
 
-
-public class LoginPageTest extends TestBase {
-    /******* deklaracja obiektów ********/
+public class AddressPageTest extends TestBase {
     HomePage homePage;
-    AccountPage accountPage;
     LoginPage loginPage;
+    AccountPage accountPage;
+    AddressPage addressPage;
 
     /********* konstruktor ***********/
-    public LoginPageTest() {
+    public AddressPageTest() {
         super();
     }
 
@@ -28,9 +28,11 @@ public class LoginPageTest extends TestBase {
         homePage = new HomePage();
         loginPage = new LoginPage();
         accountPage = new AccountPage();
+        addressPage = new AddressPage();
 
         loginPage = homePage.goToLoginPage();
         accountPage = loginPage.login(testdata.getProperty("userLogin"), testdata.getProperty("userPassword"));
+        addressPage = accountPage.goToAddress();
     }
 
     // Po każdym teście zamknięcie przeglądarki
@@ -40,9 +42,11 @@ public class LoginPageTest extends TestBase {
     }
 
 
-    /********* TESTY ***********/
+    /*********  TESTY *********/
     @Test(priority = 0)
-    public void verifyPageTitle() {
-        Assert.assertTrue(loginPage.getPageTitle().equals(testdata.getProperty("correctAccountPageTitle")));
+    public void verifyNoDeliveryAddress() {
+        Assert.assertTrue(addressPage.getInfoDeliveryAddress().equalsIgnoreCase
+                (testdata.getProperty("correctInfoAboutDeliveryAddress")));
+
     }
 }

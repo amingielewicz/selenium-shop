@@ -1,13 +1,11 @@
 package pages;
 
 import base.TestBase;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
-
 
 public class HomePage extends TestBase {    //extends - HomePage będzie mogło korzystać z TestBase
     //nie musimy podawać inicjalizacji WebDrivera czy WebDriverWait bo podaliśmy w TestBase
@@ -19,7 +17,7 @@ public class HomePage extends TestBase {    //extends - HomePage będzie mogło 
     private WebElement myAccountMenu;
 
     /***konstruktor***/
-    public HomePage (WebDriver driver) {
+    public HomePage() {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
