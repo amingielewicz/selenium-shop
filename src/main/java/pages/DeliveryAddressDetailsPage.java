@@ -36,9 +36,11 @@ public class DeliveryAddressDetailsPage extends TestBase {
     public DeliveryAddressDetailsPage() {
         PageFactory.initElements(driver, this);
 
+    }
+
         /****  metody  ****/
         //Wpisanie wartości tekstowej w pole Imię
-        public void setName (String nameStr){
+        public void setName(String nameStr) {
             wait.until(visibilityOf(nameInput));
             nameInput.clear();
             nameInput.sendKeys(nameStr);
@@ -53,7 +55,7 @@ public class DeliveryAddressDetailsPage extends TestBase {
         public void setCountry (String countryStr){
             wait.until(visibilityOf(countryInputArrow));
             countryInputArrow.click();
-            countryInput.sendKeys(countrySr, Keys.ENTER);
+            countryInput.sendKeys(countryStr, Keys.ENTER);
         }
         //Wpisanie wartości tekstowej w pole Ulica
         public void setStreet (String streetStr){
@@ -68,7 +70,7 @@ public class DeliveryAddressDetailsPage extends TestBase {
             cityInput.sendKeys(cityStr);
         }
         //Wpisanie wartości tekstowej w pole Województwo
-        public void setCity (String regionStr){
+        public void setRegion (String regionStr){
             wait.until(visibilityOf(regionInput));
             regionInput.clear();
             regionInput.sendKeys(regionStr);
@@ -86,13 +88,13 @@ public class DeliveryAddressDetailsPage extends TestBase {
         }
         //Metoda wykinująca pełną akcję uzupełnienie formularza adresy dostawy
         //zwraca stronę AddressPage
-        public AddressPage fillF orm (String nameStr, String lastNameStr, String countryStr, String addressStr, String
+        public AddressPage fillForm (String nameStr, String lastNameStr, String countryStr, String addressStr, String
         postCodeStr, String cityStr){
             setName(nameStr);
             setLastName(lastNameStr);
             setCountry(countryStr);
             setCity(cityStr);
-            setStreet(streetStr);
+            setStreet(addressStr);
             setPostCode(postCodeStr);
             clickInSaveButton();
             return new AddressPage();
