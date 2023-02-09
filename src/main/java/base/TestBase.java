@@ -68,10 +68,6 @@ public class TestBase {
 
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--incognito");
-                capabilities = new DesiredCapabilities();
-                capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-
-                options.merge(capabilities);
                 ChromeDriver driver = new ChromeDriver(options);
 
                 break;
