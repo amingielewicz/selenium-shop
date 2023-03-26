@@ -40,9 +40,9 @@ public class DeliveryAddressDetailsPage extends TestBase {
         PageFactory.initElements(driver, this);
     }
     public void setCountry(String country){
-        wait.until(visibilityOf(arrowInputCountry));
-        arrowInputCountry.click();
-        inputCountry.sendKeys(country, Keys.ENTER);
+        wait.until(visibilityOf(countryInputArrow));
+        countryInputArrow.click();
+        cityInput.sendKeys(country, Keys.ENTER);
     }
 
         /****  metody  ****/
@@ -92,7 +92,8 @@ public class DeliveryAddressDetailsPage extends TestBase {
 //        public void clickInSaveButton () {
 //            wait.until(visibilityOf(saveButton));
 //            saveButton.click();
-        }
+        //}
+
         //Metoda wykonująca pełną akcję uzupełnienie formularza adresy dostawy
         //zwraca stronę AddressPage
         public AddressPage fillForm (String nameStr, String lastNameStr, String countryStr, String addressStr, String
@@ -105,15 +106,14 @@ public class DeliveryAddressDetailsPage extends TestBase {
 //            setStreet(addressStr);
 //            setPostCode(postCodeStr);
 //            clickInSaveButton();
-            globalMethods.setInput(name, nameStr);
-            globalMethods.setInput(lastName, lastNameStr);
+            globalMethods.setInput(nameInput, nameStr);
+            globalMethods.setInput(lastNameInput, lastNameStr);
             setCountry(countryStr);
-            globalMethods.setInput(postcode, postcodeStr);
-            globalMethods.setInput(city, cityStr);
-            globalMethods.clickButton(saveAddressButton);
+            globalMethods.setInput(postCodeInput, postCodeStr);
+            globalMethods.setInput(cityInput, cityStr);
+            globalMethods.clickButton(saveButton);
             return new AddressPage();
         }
 
-
     }
-}
+

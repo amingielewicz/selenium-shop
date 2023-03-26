@@ -1,6 +1,7 @@
 package pages;
 
 import base.TestBase;
+import helpers.GlobalMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,6 +10,7 @@ import static base.TestBase.driver;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class OrderConfirmedPage extends TestBase {
+    GlobalMethods globalMethods;
 
     /**** repozytorium elementów ****/
     @FindBy(xpath = "//*[@class='woocommerce-MyAccount-content']/div[2]")
@@ -17,16 +19,18 @@ public class OrderConfirmedPage extends TestBase {
 
     /**** konstruktor ****/
     public OrderConfirmedPage(){
+        globalMethods = new GlobalMethods();
         PageFactory.initElements(driver, this);
     }
 
     /****  metody  ****/
     // Pobranie i zwrócenie komunikatu o liczbie złożonych zamówień
     public String getInfoAboutOrders(){
-        wait.until(visibilityOf(infoAboutOrders));
-        String message = infoAboutOrders.getText();
-        System.out.println("Komunikat dotyczący ilośc złożonych zamówień: " + message);
-        return message;
+//        wait.until(visibilityOf(infoAboutOrders));
+//        String message = infoAboutOrders.getText();
+//        System.out.println("Komunikat dotyczący ilośc złożonych zamówień: " + message);
+//        return message;
+        return globalMethods.getTextFromElement(infoAboutOrders);
     }
 
 }

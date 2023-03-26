@@ -1,6 +1,7 @@
 package pages;
 
 import base.TestBase;
+import helpers.GlobalMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class AccountPage extends TestBase {
+    GlobalMethods globalMethods;
 
     /*** repozytorium elementów ***/
     @FindBy(xpath = "//*[@class='woocommerce-MyAccount-content']/p/strong")
@@ -18,15 +20,18 @@ public class AccountPage extends TestBase {
     private WebElement adresyMenuBoczne;
 
     /*** konstruktor ***/
-    public AccountPage() { PageFactory.initElements(driver, this); }
+    public AccountPage() {
+        globalMethods = new GlobalMethods();
+        PageFactory.initElements(driver, this); }
 
     /*** metody ***/
     //Pobranie i zwrócenie nazwy konta (Imię i nazwisko)
     public String getNameAccount(){
-        wait.until(visibilityOf(nameAccountLabel));
-        String nameAccount = nameAccountLabel.getText();
-        System.out.println("Jesteś zalogowany jako: "+ nameAccount);
-        return nameAccount;
+//        wait.until(visibilityOf(nameAccountLabel));
+//        String nameAccount = nameAccountLabel.getText();
+//        System.out.println("Jesteś zalogowany jako: "+ nameAccount);
+//        return nameAccount;
+        return  globalMethods.getTextFromElement(nameAccountLabel);
     }
     //Przejście na zakładkę Zakówienia (zamówienia potwierdzone)
     public OrderConfirmedPage goToOrders(){
