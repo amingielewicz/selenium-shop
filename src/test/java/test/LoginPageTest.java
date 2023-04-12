@@ -1,6 +1,7 @@
 package test;
 
 import base.TestBase;
+import helpers.GlobalMethods;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -12,6 +13,7 @@ import pages.LoginPage;
 
 public class LoginPageTest extends TestBase {
     /******* deklaracja obiektów ********/
+    GlobalMethods globalMethods;
     HomePage homePage;
     AccountPage accountPage;
     LoginPage loginPage;
@@ -25,10 +27,10 @@ public class LoginPageTest extends TestBase {
     @BeforeMethod
     public void setUp() {
         initialization();
+        globalMethods = new GlobalMethods();
         homePage = new HomePage();
         loginPage = new LoginPage();
         accountPage = new AccountPage();
-
         loginPage = homePage.goToLoginPage();
         accountPage = loginPage.login(testdata.getProperty("userLogin"), testdata.getProperty("userPassword"));
     }
@@ -43,6 +45,7 @@ public class LoginPageTest extends TestBase {
     /********* TESTY ***********/
     @Test(priority = 0)
     public void verifyPageTitle() {
-        Assert.assertTrue(loginPage.getPageTitle().equals(testdata.getProperty("correctAccountPageTitle")));
+        Assert.assertTrue(globalMethods.getPageTitle().equals(testdata.getProperty("correctAccountPageTitle")));
+        takeScreenshot(1);
     }
 }

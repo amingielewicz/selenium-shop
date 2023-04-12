@@ -1,7 +1,13 @@
 package helpers;
 
 import base.TestBase;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+
+import java.io.File;
+import java.io.IOException;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
@@ -25,7 +31,9 @@ public class GlobalMethods extends TestBase {
     }
     public String getTextFromElement(WebElement element){
         wait.until(visibilityOf(element));
-        String text = element.getText();
-        return text;
+//        String text = element.getText();
+//        return text;
+        return element.getText();
     }
+
 }

@@ -1,53 +1,52 @@
 package base;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-import java.net.MalformedURLException;
-import java.net.URL;
-import static java.lang.Integer.*;
+
 
 public class TestBase {
     public static Properties config;
     public static WebDriver driver;
-    public static WebDriver driver1;
     public static WebDriverWait wait;
     public static Properties testdata;
 
-
-    public TestBase(){
-    try {
-        config = new Properties();
-        FileInputStream file = new FileInputStream(System.getProperty("user.dir") +
-                "/src/main/java/config/config.properties");
-        config.load(file);
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    try {
+    //Inicjalizacja pliku z ustawieniami
+    public TestBase() {
+        try {
+            config = new Properties();
+            FileInputStream file = new FileInputStream(System.getProperty("user.dir") +
+                    "/src/main/java/config/config.properties");
+            config.load(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Nie znaleziono pliku.");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             testdata = new Properties();
             FileInputStream file = new FileInputStream(System.getProperty("user.dir") +
                     "/src/main/java/testdata/testdata.properties");
             testdata.load(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            System.out.println("Nie znaleziono pliku.");
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
@@ -63,18 +62,18 @@ public class TestBase {
 
         switch (browser) {
             case "chrome":
-                System.setProperty("webdriver.chromedriver", System.getProperty("user.dir") +
-                        "/src/main/resources/chromedriver");
+//               System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +
+//                        "/src/main/resources/chromedriver");
 
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--incognito");
-                ChromeDriver driver = new ChromeDriver(options);
+                driver = new ChromeDriver(options);
 
                 break;
             case "firefox":
                 System.setProperty("webdriver.geckodriver", System.getProperty("user.dir") + "/src/main/resources/geckodriver");
 
-                FirefoxDriver driver1 = new FirefoxDriver();
+               driver = new FirefoxDriver();
                 break;
             default:
                 throw new IllegalArgumentException("Nierozpoznano przeglądarki internetowej. " +
@@ -87,10 +86,19 @@ public class TestBase {
         if (windowMaximize.equalsIgnoreCase("true")) {
             driver.manage().window().maximize();
         }
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(url);
+    }
+
+    public void takeScreenshot(int nrTestu) {
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(src, new File("src/main/resources" + nrTestu + "screenshot.png"));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
+}
+
 
 

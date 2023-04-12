@@ -26,7 +26,6 @@ public class AccountPageTest extends TestBase {
         homePage = new HomePage();
         loginPage = new LoginPage();
         accountPage = new AccountPage();
-
         loginPage = homePage.goToLoginPage();
         accountPage = loginPage.login(testdata.getProperty("userLogin"), testdata.getProperty("userPassword"));
     }
@@ -42,5 +41,7 @@ public class AccountPageTest extends TestBase {
     public void verifyNameAccountAfterLogin(){
         Assert.assertEquals(accountPage.getNameAccount(), testdata.getProperty("correctNameAccount"),
                 "Nie jesteś zalogowany na własciwe konto! Proszę o wylogowanie się");
+        takeScreenshot(2);
+
     }
 }

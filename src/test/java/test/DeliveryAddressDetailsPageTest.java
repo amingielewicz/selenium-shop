@@ -46,5 +46,6 @@ public class DeliveryAddressDetailsPageTest extends TestBase {
                 "Jan Testowy2\n" +
                         "Polska\n" +
                         "00-001 Warszawa");
+        takeScreenshot(5);
     }
 }

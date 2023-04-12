@@ -12,5 +12,8 @@
         <module name="selenium-shop" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="travels" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -45,10 +45,12 @@ public class ProductListPageTest extends TestBase {
     public void verifyProductNumber(){
         Assert.assertEquals(productListPage.getProductsNumber(),
                 Integer.parseInt(testdata.getProperty("correctProductNumber")));
+    takeScreenshot(6);
     }
 
     @Test(priority = 1)
     public void verifySortProducts(){
         Assert.assertEquals(productListPage.getProductsNameAfterOrderByPrice(), correctProductListSortByPriceFromLowest);
+    takeScreenshot(7);
     }
 }

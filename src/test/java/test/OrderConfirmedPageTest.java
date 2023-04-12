@@ -46,6 +46,7 @@ public class OrderConfirmedPageTest extends TestBase {
     public void verifyNoOrders() {
         Assert.assertTrue(orderConfirmedPage.getInfoAboutOrders().contains(testdata.getProperty("correctInfoAboutOrder")),
                 "Istnieją już złożone zamówienia!");
+        takeScreenshot(3);
 
     }
 }
