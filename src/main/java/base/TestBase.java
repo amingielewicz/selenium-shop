@@ -1,6 +1,7 @@
 package base;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -8,12 +9,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -59,6 +63,8 @@ public class TestBase {
         String windowMaximize = config.getProperty("windowMaximize");
         String waitTimeout = config.getProperty("waitTimeout");
         String deleteAllCookies = config.getProperty("deleteAllCookies");
+        String grid = config.getProperty("grid");
+
 
         switch (browser) {
             case "chrome":
@@ -67,13 +73,41 @@ public class TestBase {
 
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--incognito");
-                driver = new ChromeDriver(options);
+//                options.setCapability("browserVersion", "100");
+//                options.setCapability("platformName", "Linux");
+//                options.setCapability("se:name", "My simple test");
+//                options.setCapability("se:sampleMetadata", "Sample metadata value");
+
+                if (grid.equalsIgnoreCase("true")) {
+                    try {
+
+                        driver = new RemoteWebDriver(new URL("http://localhost:4444"), options);
+
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    driver = new ChromeDriver(options);
+                }
+
 
                 break;
             case "firefox":
                 System.setProperty("webdriver.geckodriver", System.getProperty("user.dir") + "/src/main/resources/geckodriver");
 
-               driver = new FirefoxDriver();
+                FirefoxDriver optionsf = new FirefoxDriver();
+                if (grid.equalsIgnoreCase("true")) {
+                    try {
+
+                        driver = new RemoteWebDriver(new URL("http://192.168.5.94:4444"), (Capabilities) optionsf);
+
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+
+                    driver = new FirefoxDriver();
+                }
                 break;
             default:
                 throw new IllegalArgumentException("Nierozpoznano przeglądarki internetowej. " +
