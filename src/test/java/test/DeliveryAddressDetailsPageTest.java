@@ -1,8 +1,10 @@
 package test;
 
-import base.*;
+import base.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.*;
 
 public class DeliveryAddressDetailsPageTest extends TestBase {
@@ -16,6 +18,7 @@ public class DeliveryAddressDetailsPageTest extends TestBase {
     public DeliveryAddressDetailsPageTest() {
         super();
     }
+
     // Przed każdym testem uruchomienie przeglądarki wraz z zadeklarowanymi własnościami
     @BeforeMethod
     public void setUp() {
@@ -30,17 +33,18 @@ public class DeliveryAddressDetailsPageTest extends TestBase {
         addressPage = accountPage.goToAddress();
         deliveryAddressDetailsPage = addressPage.goToAddDeliveryAddress();
     }
+
     // Po każdym teście zamknięcie przeglądarki
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.quit();
     }
 
     /*********  TESTY *********/
     @Test(priority = 0)
     public void addDeliveryAddress() {
-        addressPage = deliveryAddressDetailsPage.fillForm("Jan","Testowy2","Polska",
-                "Słoneczna","00-001","Warszawa");
+        addressPage = deliveryAddressDetailsPage.fillForm("Jan", "Testowy2", "Polska",
+                "Słoneczna", "00-001", "Warszawa");
 
         Assert.assertEquals(addressPage.getInfoDeliveryAddress(),
                 "Jan Testowy2\n" +

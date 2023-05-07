@@ -39,7 +39,7 @@ public class ProductListPage extends TestBase {
     }
 
     // Wybranie z listy sortującej, pozycji: Sortuj wg ceny: od najniższej
-    public void sortProductByPrice(){
+    public void sortProductByPrice() {
         Select orderByList = new Select(orderbyList);
         orderByList.selectByValue("price");
     }

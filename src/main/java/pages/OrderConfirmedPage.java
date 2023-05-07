@@ -16,7 +16,6 @@ public class OrderConfirmedPage extends TestBase {
 
     /**** konstruktor ****/
     public OrderConfirmedPage() {
-        //globalMethods = new GlobalMethods();
         PageFactory.initElements(driver, this);
     }
 
@@ -27,7 +26,6 @@ public class OrderConfirmedPage extends TestBase {
         String message = infoAboutOrders.getText();
         System.out.println("Komunikat dotyczący ilośc złożonych zamówień: " + message);
         return message;
-        //  return globalMethods.getTextFromElement(infoAboutOrders);
     }
 
 }

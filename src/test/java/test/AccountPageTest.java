@@ -32,13 +32,13 @@ public class AccountPageTest extends TestBase {
 
     // Po każdym teście zamknięcie przeglądarki
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.quit();
     }
 
     /*********  TESTY *********/
     @Test(priority = 0)
-    public void verifyNameAccountAfterLogin(){
+    public void verifyNameAccountAfterLogin() {
         Assert.assertEquals(accountPage.getNameAccount(), testdata.getProperty("correctNameAccount"),
                 "Nie jesteś zalogowany na własciwe konto! Proszę o wylogowanie się");
         takeScreenshot(2);

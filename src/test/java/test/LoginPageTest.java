@@ -12,7 +12,6 @@ import pages.LoginPage;
 
 public class LoginPageTest extends TestBase {
     /******* deklaracja obiektów ********/
-    //GlobalMethods globalMethods;
     HomePage homePage;
     AccountPage accountPage;
     LoginPage loginPage;
@@ -26,7 +25,6 @@ public class LoginPageTest extends TestBase {
     @BeforeMethod
     public void setUp() {
         initialization();
-       // globalMethods = new GlobalMethods();
         homePage = new HomePage();
         loginPage = new LoginPage();
         accountPage = new AccountPage();
@@ -45,7 +43,8 @@ public class LoginPageTest extends TestBase {
     @Test(priority = 0)
     public void verifyPageTitle() {
       /*  LoginPage loginPage = new HomePage().goToLoginPage();
-        AccountPage accountPage = new LoginPage().login(testdata.getProperty("userLogin"), testdata.getProperty("userPassword"))*/;
+        AccountPage accountPage = new LoginPage().login(testdata.getProperty("userLogin"), testdata.getProperty("userPassword"))*/
+        ;
         //Assert.assertTrue(loginPage.getPageTitle().equals(testdata.getProperty("correctAccountPageTitle")));
         Assert.assertEquals(loginPage.getPageTitle(), testdata.getProperty("correctAccountPageTitle"), "Tytuł strony w testdata nie zgadza sie z pobranym z strony.");
         takeScreenshot(1);

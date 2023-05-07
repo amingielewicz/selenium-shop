@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class AddressPage extends TestBase {
-    //GlobalMethods globalMethods;
 
     /*** repozytorium elementów ***/
     @FindBy(xpath = "//h3[contains(text(),'wysyłki')]//parent::*//parent::*/address")
@@ -18,22 +17,22 @@ public class AddressPage extends TestBase {
 
     /*** konstruktor ***/
     public AddressPage() {
-       // globalMethods = new GlobalMethods();
         PageFactory.initElements(driver, this);
     }
+
     /****  metody  ****/
     // Przejście do strony z dodaniem/edytowaniem adresy dostawy
-    public DeliveryAddressDetailsPage goToAddDeliveryAddress(){
+    public DeliveryAddressDetailsPage goToAddDeliveryAddress() {
         wait.until(visibilityOf(addDeliveryAddress));
         addDeliveryAddress.click();
         return new DeliveryAddressDetailsPage();
     }
+
     // Pobranie i zwrócenie komunikatu dotyczącego istnienia adresy dostawy
-    public String getInfoDeliveryAddress(){
+    public String getInfoDeliveryAddress() {
         wait.until(visibilityOf(infoDeliveryAddress));
         String message = infoDeliveryAddress.getText();
         System.out.println("Komunikat adres dostawy: " + '\n' + message);
         return message;
-       // return globalMethods.getTextFromElement(infoDeliveryAddress);
     }
 }

@@ -2,7 +2,9 @@ package test;
 
 import base.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ProductListPage;
 
@@ -31,23 +33,24 @@ public class ProductListPageTest extends TestBase {
         productListPage = new ProductListPage();
         productListPage = homePage.goToProductPage();
     }
+
     // Po każdym teście zamknięcie przeglądarki
     @AfterMethod
-    public void closeBrowser(){
+    public void closeBrowser() {
         driver.quit();
     }
 
     /*********  TESTY *********/
     @Test(priority = 1)
-    public void verifyProductNumber(){
+    public void verifyProductNumber() {
         Assert.assertEquals(productListPage.getProductsNumber(),
                 Integer.parseInt(testdata.getProperty("correctProductNumber")));
-    takeScreenshot(6);
+        takeScreenshot(6);
     }
 
     @Test(priority = 2)
-    public void verifySortProducts(){
+    public void verifySortProducts() {
         Assert.assertEquals(productListPage.getProductsNameAfterOrderByPrice(), correctProductListSortByPriceFromLowest);
-    takeScreenshot(7);
+        takeScreenshot(7);
     }
 }
