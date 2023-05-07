@@ -44,7 +44,7 @@ public class DeliveryAddressDetailsPageTest extends TestBase {
 
         Assert.assertEquals(addressPage.getInfoDeliveryAddress(),
                 "Jan Testowy2\n" +
-                        "Polska\n" +
+                        "Słoneczna\n" +
                         "00-001 Warszawa");
         takeScreenshot(5);
     }

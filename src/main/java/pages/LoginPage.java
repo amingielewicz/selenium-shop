@@ -1,15 +1,11 @@
 package pages;
 
 import base.TestBase;
-import helpers.GlobalMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
-
 public class LoginPage extends TestBase {
-    GlobalMethods globalMethods;
 
     /*** repozytorium elementów ***/
     @FindBy(id = "username")
@@ -23,8 +19,6 @@ public class LoginPage extends TestBase {
 
     /*** konstruktor ***/
     public LoginPage() {
-        globalMethods = new GlobalMethods();
-//        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -57,12 +51,12 @@ public class LoginPage extends TestBase {
     // Metoda wykonująca pełną akcję logowania
     //zwracająca stronę AccountPage
     public AccountPage login(String login, String password){
-//        setLoginInput(login);
-//        setPasswordInput(password);
-//        clickLoginButton();
-        globalMethods.setInput(loginInput, login);
-        globalMethods.setInput(passwordInput, password);
-        globalMethods.clickButton(loginButton);
+/*      setLoginInput(login);
+        setPasswordInput(password);
+        clickLoginButton();*/
+        setInput(loginInput, login);
+        setInput(passwordInput, password);
+        clickButton(loginButton);
         return new AccountPage();
     }
 }

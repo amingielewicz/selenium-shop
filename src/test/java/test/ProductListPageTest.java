@@ -29,11 +29,8 @@ public class ProductListPageTest extends TestBase {
         initialization();
         homePage = new HomePage();
         productListPage = new ProductListPage();
-
         productListPage = homePage.goToProductPage();
     }
-
-
     // Po każdym teście zamknięcie przeglądarki
     @AfterMethod
     public void closeBrowser(){
@@ -41,14 +38,14 @@ public class ProductListPageTest extends TestBase {
     }
 
     /*********  TESTY *********/
-    @Test(priority = 0)
+    @Test(priority = 1)
     public void verifyProductNumber(){
         Assert.assertEquals(productListPage.getProductsNumber(),
                 Integer.parseInt(testdata.getProperty("correctProductNumber")));
     takeScreenshot(6);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 2)
     public void verifySortProducts(){
         Assert.assertEquals(productListPage.getProductsNameAfterOrderByPrice(), correctProductListSortByPriceFromLowest);
     takeScreenshot(7);

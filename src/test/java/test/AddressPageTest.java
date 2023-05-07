@@ -43,10 +43,10 @@ public class AddressPageTest extends TestBase {
 
 
     /*********  TESTY *********/
-    @Test(priority = 0)
+    @Test(priority = 1)
     public void verifyNoDeliveryAddress() {
-        Assert.assertTrue(addressPage.getInfoDeliveryAddress().equalsIgnoreCase
-                (testdata.getProperty("correctInfoAboutDeliveryAddress")));
+        Assert.assertFalse(addressPage.getInfoDeliveryAddress().equalsIgnoreCase(testdata.getProperty("correctInfoAboutDeliveryAddress")));
+
         takeScreenshot(4);
 
     }

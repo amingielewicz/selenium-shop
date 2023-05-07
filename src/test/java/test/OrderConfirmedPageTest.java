@@ -42,7 +42,7 @@ public class OrderConfirmedPageTest extends TestBase {
     }
 
     /*********  TESTY *********/
-    @Test(priority = 0)
+    @Test(priority = 1)
     public void verifyNoOrders() {
         Assert.assertTrue(orderConfirmedPage.getInfoAboutOrders().contains(testdata.getProperty("correctInfoAboutOrder")),
                 "Istnieją już złożone zamówienia!");
